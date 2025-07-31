@@ -12,7 +12,9 @@ const Home = () => {
 
   useEffect(()=> {
     const fetchTasks = async () => {
-      const response = await fetch('/api/tasks')
+      const response = await fetch('https://mern-backend-server-ochre.vercel.app/api/tasks', {
+        credentials: true
+      })
       const json = await response.json()
 
       if (response.ok) {
@@ -25,14 +27,14 @@ const Home = () => {
   }, [dispatch])
 
   const handleDelete = async (id) => {
-  const response = await fetch(`/api/tasks/${id}`, { method: 'DELETE' });
+  const response = await fetch(`https://mern-backend-server-ochre.vercel.app//api/tasks/${id}`, { method: 'DELETE' });
   if (response.ok) {
     dispatch({ type: 'DELETE_TASK', payload: { _id: id } });
   }
 };
 
 const handleToggleComplete = async (task) => {
-  const response = await fetch(`/api/tasks/${task._id}`, {
+  const response = await fetch(`https://mern-backend-server-ochre.vercel.app//api/tasks/${task._id}`, {
     method: 'PATCH',
   });
   const json = await response.json();

@@ -15,7 +15,7 @@ const TaskForm = () => {
     const task = {title, description}
 
     try {
-    const response = await fetch('/api/tasks', {
+    const response = await fetch('https://mern-backend-server-ochre.vercel.app//api/tasks', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
